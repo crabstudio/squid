@@ -1,0 +1,33 @@
+{
+  "name": "squid",
+  "version": "0.0.1",
+  "description": "Javascript framework for building backend services",
+  "main": "index.ts",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec ts-node index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crabstudio/squid.git"
+  },
+  "keywords": [
+    "API",
+    "RESTAPI",
+    "endpoint"
+  ],
+  "author": "crabstudio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jabedzaman/api.jabed/issues"
+  },
+  "homepage": "https://github.com/jabedzaman/api.jabed#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.3"
+  }
+}
