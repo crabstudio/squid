@@ -30,6 +30,9 @@
   },
   "homepage": "https://github.com/jabedzaman/api.jabed#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/morgan": "^1.9.4",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
@@ -40,5 +43,13 @@
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.0",
     "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "morgan": "^1.10.0"
   }
 }
