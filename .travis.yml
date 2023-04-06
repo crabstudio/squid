@@ -1,0 +1,7 @@
+language: node_js
+script: 
+  - echo "*** INSTALLING DEPENDENCIES ***"
+  - npm install
+  - echo "***BUILDING PROJECT ***"
+  - npm run lint
+  
