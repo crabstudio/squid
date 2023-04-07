@@ -1,5 +1,6 @@
 <p align="center">
-  SQUID 
+<img src="https://raw.githubusercontent.com/crabstudio/squid/main/docs/images/squid.png" width="200" alt="SQUID">
+  <h1>SQUID </h1>
 </p>
 <p align="center">
   Node.js backend framework for building backend services.
