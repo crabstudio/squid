@@ -11,13 +11,23 @@ import welcome from "./utils/welcome";
 import { Init } from "./helpers/gitInit";
 
 const main = async () => {
+  clear();
+  welcome();
   const projectName = await getNewProjectName();
-  exec(`mkdir ${projectName}`);
   const db = await getDb();
   const ci = await getCi();
   const hosting = await getHosting();
   const init = await Init(projectName);
-  console.log(projectName, db, ci, hosting, init);
+  await createProject(projectName);
+};
+
+const createProject = async (projectName: string) => {
+  // exec(`mkdir ${projectName}`);
+  // exec(`cd ${projectName}`);
+  // exec(`npm init -y`);
+  // exec(`git clone https://github.com/crabstudio/squid.git ${projectName}`);
+  // exec(`cd ${projectName}`);
+  // exec(`rm -rf .git`);
 };
 
 process.on("SIGINT", () => {
@@ -33,6 +43,6 @@ process.on("uncaughtException", (error) => {
   exitHandler({ exit: true });
 });
 
-clear();
-welcome();
-main();
+main().catch((err) => {
+  console.error("something went wrong\n" + err);
+});
