@@ -7,13 +7,15 @@ import exitHandler from "./utils/errhandler";
 import { getCi } from "./helpers/addCi";
 import { getHosting } from "./helpers/getHosting";
 import welcome from "./utils/welcome";
+import { Init } from "./helpers/gitInit";
 
 const main = async () => {
   const projectName = await getNewProjectName();
   const db = await getDb();
   const ci = await getCi();
   const hosting = await getHosting();
-  console.log(projectName, db, ci, hosting);
+  const init = await Init();
+  console.log(projectName, db, ci, hosting, init);
 };
 
 process.on("SIGINT", () => {
