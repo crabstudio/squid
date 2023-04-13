@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { clear } from "console";
+import { exec } from "child_process";
 import { getNewProjectName } from "./helpers/getName";
 import { getDb } from "./helpers/getDb";
 import exitHandler from "./utils/errhandler";
@@ -11,10 +12,11 @@ import { Init } from "./helpers/gitInit";
 
 const main = async () => {
   const projectName = await getNewProjectName();
+  exec(`mkdir ${projectName}`);
   const db = await getDb();
   const ci = await getCi();
   const hosting = await getHosting();
-  const init = await Init();
+  const init = await Init(projectName);
   console.log(projectName, db, ci, hosting, init);
 };
 
