@@ -1,0 +1,56 @@
+{
+  "name": "create-squid-app",
+  "version": "0.0.1",
+  "description": "CLI tool for creating squid application",
+  "main": "index.ts",
+  "bin": {
+    "create-squid-app": "./index.ts"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": " node --experimental-specifier-resolution=node --loader ts-node/esm index.ts",
+    "dev": "  nodemon --experimental-specifier-resolution=node ts-node/esm index.ts  --watch src --ext ts",
+    "dev:debug": "nodemon --inspect index.ts",
+    "build": "tsc",
+    "clean": "rm -rf dist node_modules",
+    "pub": "npm publish",
+    "pub:patch": "npm version patch && npm publish",
+    "pub:minor": "npm version minor && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crabstudio/squid.git",
+    "directory": "cli"
+  },
+  "keywords": [
+    "create-squid-app",
+    "cli"
+  ],
+  "author": "crabstudio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crabstudio/squid/issues"
+  },
+  "homepage": "https://github.com/crabstudio/squid#readme",
+  "dependencies": {
+    "abort-controller": "^3.0.0",
+    "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
+    "commander": "^10.0.0",
+    "figlet": "^1.6.0",
+    "inquirer": "^9.1.5",
+    "ora": "^6.3.0",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/chalk-animation": "^1.6.1",
+    "@types/figlet": "^1.5.5",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.15.11",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.4"
+  }
+}
