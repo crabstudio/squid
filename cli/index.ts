@@ -4,27 +4,30 @@ import chalk from "chalk";
 import { clear } from "console";
 import * as helpers from "./helpers";
 import * as utils from "./utils";
+import scafoldProject from "./scafoldProject";
 
 const main = async () => {
   clear();
   utils.welcome();
   const projectName = (await helpers.getNewProjectName()) as string;
   const db = (await helpers.getDb()) as string;
-  const ci = (await helpers.getCi()) as Array<{ name: string }>;
+  const ci = (await helpers.getCi()) as string[];
   const hosting = (await helpers.getHosting()) as string;
-  const lint = (await helpers.getLint()) as Array<{ name: string }>;
+  const eslint = (await helpers.getLint()) as boolean;
   const prettier = (await helpers.getPrettier()) as boolean;
   (await helpers.Init(projectName)) as boolean;
   // const packageManager = (await getPkgMa packageManager.split(" ")[0];nager()) as string;
   const packageManager = "npm";
   const installDependencies = false;
-  // scaffoldProject({
-  //   projectName,
-  //   database: db,
-  //   ci,
-  //   hosting,
-  // });
-  console.log(db, ci, hosting, lint, prettier);
+  // const installDependencies = (await getInstallDependencies()) as boolean;
+  scafoldProject({
+    projectName,
+    ci,
+    database: db,
+    eslint,
+    hosting,
+    prettier,
+  });
   utils.nextSteps(projectName, packageManager, installDependencies);
 };
 

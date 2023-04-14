@@ -1,0 +1,14 @@
+service: my-express-app
+provider:
+  name: aws
+  runtime: nodejs14.x
+functions:
+  app:
+    handler: app.handler
+    events:
+      - http:
+          path: /
+          method: any
+          cors: true
+plugins:
+  - serverless-offline

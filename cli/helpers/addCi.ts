@@ -6,7 +6,7 @@ export const getCi = async () => {
         type: "checkbox",
         name: "ci",
         message: "Select CI",
-        choices: ["Github Actions", "Travis CI", "Circle CI", "Gitlab CI"],
+        choices: ["Github Actions", "Travis CI", "Circle CI", "Gitlab CI","bitbucket pipelines"],
         },
     ]);
     return ci;

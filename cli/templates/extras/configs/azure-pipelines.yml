@@ -1,0 +1,33 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+  displayName: 'Install Dependencies'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+  displayName: 'Archive Files'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: '<your-subscription>'
+    appType: 'webAppLinux'
+    WebAppName: '<your-app-name>'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  displayName: 'Deploy to Azure Web App'

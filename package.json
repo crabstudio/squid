@@ -1,7 +1,7 @@
 {
   "name": "squid",
   "version": "0.0.1",
-  "description": "Javascript framework for building backend services",
+  "description": "Start your backend project with the most simple and easy way",
   "engines": {
     "node": ">=14.0.0"
   },
@@ -19,21 +19,17 @@
   "keywords": [
     "API",
     "RESTAPI",
-    "endpoint"
+    "endpoint",
+    "framework",
+    "create-squid-app"
   ],
   "author": "crabstudio",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/jabedzaman/api.jabed/issues"
+    "url": "https://github.com/crabstudio/squid/issues"
   },
-  "homepage": "https://github.com/jabedzaman/api.jabed#readme",
+  "homepage": "https://github.com/crabstudio/squid#readme",
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/morgan": "^1.9.4",
-    "@types/mysql": "^2.15.21",
-    "@types/node": "^18.15.11",
-    "@types/pg": "^8.6.6",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
@@ -43,16 +39,5 @@
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.0",
     "typescript": "^5.0.3"
-  },
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "helmet": "^6.0.1",
-    "mongoose": "^7.0.3",
-    "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "pg": "^8.10.0"
   }
 }
