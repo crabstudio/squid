@@ -23,10 +23,12 @@ export const Init = async (name: string) => {
       return false;
     }
     if (!isProjectdir(name)) {
+      console.log(chalk.blue("Initializing git repository..."));
       exec(`cd ${name}`);
       exec("git init");
+      exec("git add .");
+      exec("git commit -m 'bootsraped with create-squid-app'");
     }
-    console.log(chalk.blue("Initializing git repository..."));
   } else {
     console.log(chalk.blue("Skipping git repository initialization..."));
   }
