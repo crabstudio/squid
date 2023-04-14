@@ -6,6 +6,8 @@ import * as helpers from "./helpers";
 import * as utils from "./utils";
 import scafoldProject from "./scafoldProject";
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const main = async () => {
   clear();
   utils.welcome();
@@ -18,7 +20,7 @@ const main = async () => {
   (await helpers.Init(projectName)) as boolean;
   // const packageManager = (await getPkgMa packageManager.split(" ")[0];nager()) as string;
   const packageManager = "npm";
-  const installDependencies = false;
+  const isInstallDependencies  = (await utils.isInstallDependencies()) as boolean;
   // const installDependencies = (await getInstallDependencies()) as boolean;
   scafoldProject({
     projectName,
@@ -28,7 +30,11 @@ const main = async () => {
     hosting,
     prettier,
   });
-  utils.nextSteps(projectName, packageManager, installDependencies);
+  if (isInstallDependencies) {
+    utils.installDependencies(projectName, packageManager);
+  } else {
+  utils.nextSteps(projectName, packageManager, isInstallDependencies );
+  }
 };
 
 process.on("SIGINT", () => {
@@ -45,9 +51,6 @@ process.on("uncaughtException", (error) => {
 });
 
 main()
-  .then(() => {
-    console.log(chalk.blue("\nHappy Coding!"));
-  })
   .catch((err) => {
     console.error("Aborting installation...");
     if (err instanceof Error) {
