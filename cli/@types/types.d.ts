@@ -1,10 +1,9 @@
-type scafoldProject = {
-  projectName: string;
-  database: string;
-  ci: ci[];
-  hosting: string;
-};
+// type scafoldProject = {
+//   projectName: string;
+//   database: string;
+//   hosting: string;
+// };
 
-type ci = {
-  name: string;
-};
+// type ci = {
+//   name: string;
+// };

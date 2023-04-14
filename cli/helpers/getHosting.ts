@@ -7,12 +7,13 @@ export const getHosting = async () => {
       name: "hosting",
       message: "Select Hosting",
       choices: [
-        "Heroku",
-        "Vercel",
         "AWS",
+        "Azure",
         "Digital Ocean",
         "Google Cloud",
-        "Azure",
+        "Heroku",
+        "Netlify",
+        "Vercel",
       ],
     },
   ]);
