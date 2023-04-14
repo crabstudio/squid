@@ -1,48 +1,59 @@
 #!/usr/bin/env node
 
+import chalk from "chalk";
 import { clear } from "console";
-import { exec } from "child_process";
-import { getNewProjectName } from "./helpers/getName";
-import { getDb } from "./helpers/getDb";
-import exitHandler from "./utils/errhandler";
-import { getCi } from "./helpers/addCi";
-import { getHosting } from "./helpers/getHosting";
-import welcome from "./utils/welcome";
-import { Init } from "./helpers/gitInit";
+import * as helpers from "./helpers";
+import * as utils from "./utils";
 
 const main = async () => {
   clear();
-  welcome();
-  const projectName = await getNewProjectName();
-  const db = await getDb();
-  const ci = await getCi();
-  const hosting = await getHosting();
-  const init = await Init(projectName);
-  await createProject(projectName);
-};
-
-const createProject = async (projectName: string) => {
-  // exec(`mkdir ${projectName}`);
-  // exec(`cd ${projectName}`);
-  // exec(`npm init -y`);
-  // exec(`git clone https://github.com/crabstudio/squid.git ${projectName}`);
-  // exec(`cd ${projectName}`);
-  // exec(`rm -rf .git`);
+  utils.welcome();
+  const projectName = (await helpers.getNewProjectName()) as string;
+  const db = (await helpers.getDb()) as string;
+  const ci = (await helpers.getCi()) as Array<{ name: string }>;
+  const hosting = (await helpers.getHosting()) as string;
+  const lint = (await helpers.getLint()) as Array<{ name: string }>;
+  const prettier = (await helpers.getPrettier()) as boolean;
+  (await helpers.Init(projectName)) as boolean;
+  // const packageManager = (await getPkgMa packageManager.split(" ")[0];nager()) as string;
+  const packageManager = "npm";
+  const installDependencies = false;
+  // scaffoldProject({
+  //   projectName,
+  //   database: db,
+  //   ci,
+  //   hosting,
+  // });
+  console.log(db, ci, hosting, lint, prettier);
+  utils.nextSteps(projectName, packageManager, installDependencies);
 };
 
 process.on("SIGINT", () => {
-  exitHandler({ message: "Aborted by user...", exit: true });
+  utils.exitHandler({ message: "Aborted by user...", exit: true });
 });
 
 process.on("exit", () => {
-  exitHandler({ cleanup: true, exit: true });
+  utils.exitHandler({ cleanup: false, exit: false });
 });
 
 process.on("uncaughtException", (error) => {
   console.error("Uncaught exception:", error);
-  exitHandler({ exit: true });
+  utils.exitHandler({ exit: true });
 });
 
-main().catch((err) => {
-  console.error("something went wrong\n" + err);
-});
+main()
+  .then(() => {
+    console.log(chalk.blue("\nHappy Coding!"));
+  })
+  .catch((err) => {
+    console.error("Aborting installation...");
+    if (err instanceof Error) {
+      console.error(err);
+    } else {
+      console.error(
+        "An unknown error has occurred. Please open an issue on github with the below:"
+      );
+      console.log(err);
+    }
+    process.exit(1);
+  });
