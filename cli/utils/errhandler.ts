@@ -1,4 +1,4 @@
-function exitHandler(options: {
+export function exitHandler(options: {
   cleanup?: boolean;
   message?: string;
   exit?: boolean;
@@ -7,7 +7,3 @@ function exitHandler(options: {
   if (options.message) console.log(options.message);
   if (options.exit) process.exit();
 }
-
-
-
-export default exitHandler;

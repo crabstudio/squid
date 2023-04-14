@@ -6,7 +6,7 @@ import { getversion } from "./getpkg";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const version = getversion();
 
-async function welcome() {
+export async function welcome() {
   const title = chalkAnimation.rainbow(
     figlet.textSync("   SQUID   ", {
       font: "Standard",
@@ -19,4 +19,3 @@ async function welcome() {
   await sleep(300);
 }
 
-export default welcome;

@@ -9,7 +9,6 @@ export const getHosting = async () => {
       choices: [
         "Heroku",
         "Vercel",
-        "Netlify",
         "AWS",
         "Digital Ocean",
         "Google Cloud",
