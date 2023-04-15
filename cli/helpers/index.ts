@@ -5,6 +5,7 @@ import { Init } from "./gitInit";
 import { getHosting } from "./getHosting";
 import { getLint } from "./getLint";
 import { getPrettier } from "./getPrettier";
+import { getPkgManager} from './getPkgManager'
 
 export {
   getNewProjectName,
@@ -14,4 +15,5 @@ export {
   getHosting,
   getLint,
   getPrettier,
+  getPkgManager
 };

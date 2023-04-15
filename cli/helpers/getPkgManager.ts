@@ -1,17 +1,25 @@
 import inquirer from "inquirer";
-import listPkgManagers from "../utils/listPkgManagers";
+import { execSync } from "child_process";
 
-export const getPkgManager = () => {
-  const packageManagers = listPkgManagers();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { packageManager }: any = inquirer.prompt([
+const pkgmanager = ["npm", "yarn", "pnpm"];
+
+const availablePkgManager = pkgmanager.filter((manager) => {
+  try {
+    execSync(`${manager} --version`, { stdio: "ignore" });
+    return true;
+  } catch (err) {
+    return false;
+  }
+});
+
+export const getPkgManager = async () => {
+  const { pkgmanager } = await inquirer.prompt([
     {
       type: "list",
-      name: "packageManager",
-      message: "Which package manager do you want to use?",
-      choices: packageManagers,
-      default: packageManagers[0],
+      name: "pkgmanager",
+      message: "Select a package manager:",
+      choices: availablePkgManager,
     },
   ]);
-  return packageManager;
+  return pkgmanager;
 };
