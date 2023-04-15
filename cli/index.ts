@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
 import { clear } from "console";
 import * as helpers from "./helpers";
 import * as utils from "./utils";
 import scafoldProject from "./scafoldProject";
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const main = async () => {
   clear();
@@ -18,10 +16,8 @@ const main = async () => {
   const eslint = (await helpers.getLint()) as boolean;
   const prettier = (await helpers.getPrettier()) as boolean;
   (await helpers.Init(projectName)) as boolean;
-  // const packageManager = (await getPkgMa packageManager.split(" ")[0];nager()) as string;
-  const packageManager = "npm";
+  const packageManager = (await helpers.getPkgManager()) as string;
   const isInstallDependencies  = (await utils.isInstallDependencies()) as boolean;
-  // const installDependencies = (await getInstallDependencies()) as boolean;
   scafoldProject({
     projectName,
     ci,
