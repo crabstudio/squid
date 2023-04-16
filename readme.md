@@ -1,1 +1,1 @@
-./cli/readme
+cli/readme.md
