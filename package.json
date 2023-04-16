@@ -1,16 +1,21 @@
 {
-  "name": "squid",
-  "version": "0.0.1",
+  "name": "@squid/root",
+  "version": "0.0.2",
   "description": "Start your backend project with the most simple and easy way",
   "engines": {
     "node": ">=14.0.0"
   },
+  "packageManager": "pnpm@8.2.0",
+  "type": "module",
   "scripts": {
-    "start:cli": "node --experimental-specifier-resolution=node --loader ts-node/esm cli/index.ts",
-    "dev": "nodemon --experimental-specifier-resolution=node --loader ts-node/esm cli/index.ts",
+    "start:cli": "cd cli && pnpm start",
+    "build:cli": "cd cli && pnpm build",
+    "dev:cli": "cd cli && pnpm dev",
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts . --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pub:beta": "cd cli && pnpm pub:beta",
+    "pub:release": "cd cli && pnpm pub:release"
   },
   "repository": {
     "type": "git",
@@ -38,6 +43,7 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.0",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.3"
   }
 }

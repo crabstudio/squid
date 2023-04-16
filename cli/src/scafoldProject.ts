@@ -2,8 +2,12 @@ import fs from "fs";
 import path from "path";
 import ora from "ora";
 import chalk from "chalk";
+import { fileURLToPath } from "url";
 
 const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const distPath = path.dirname(__filename);
+const PKG_ROOT = path.join(distPath, "../");
 
 type Props = {
   projectName: string;
@@ -32,13 +36,11 @@ function scafoldProject({
   copyModels(projectName);
   copyServices(projectName);
   doextras(projectName, database, eslint, hosting, ci, prettier);
-  spinner.succeed(
-    chalk.greenBright("Successfully created a new project!\n")
-  );
+  spinner.succeed(chalk.greenBright("Successfully created a new project!\n"));
 }
 
 const copyBase = (projectName: string) => {
-  const __TemplateDir = path.join(__dirname, "templates", "base");
+  const __TemplateDir = path.join(PKG_ROOT, "templates/base");
   const __ProjectDir = path.join(__dirname, projectName);
   fs.readdirSync(__TemplateDir).forEach((file) => {
     fs.copyFileSync(
@@ -49,7 +51,7 @@ const copyBase = (projectName: string) => {
 };
 
 const copyRoutes = (projectName: string) => {
-  const __TemplateDir = path.join(__dirname, "templates", "routes");
+  const __TemplateDir = path.join(PKG_ROOT, "templates/routes");
   const __ProjectDir = path.join(__dirname, projectName);
   fs.mkdirSync(path.join(__ProjectDir, "routes"));
   fs.readdirSync(__TemplateDir).forEach((file) => {
@@ -61,7 +63,7 @@ const copyRoutes = (projectName: string) => {
 };
 
 const copyControllers = (projectName: string) => {
-  const __TemplateDir = path.join(__dirname, "templates", "controllers");
+  const __TemplateDir = path.join(PKG_ROOT, "templates/controllers");
   const __ProjectDir = path.join(__dirname, projectName);
   fs.mkdirSync(path.join(__ProjectDir, "controllers"));
   fs.readdirSync(__TemplateDir).forEach((file) => {
@@ -73,7 +75,7 @@ const copyControllers = (projectName: string) => {
 };
 
 const copyModels = (projectName: string) => {
-  const __TemplateDir = path.join(__dirname, "templates", "models");
+  const __TemplateDir = path.join(PKG_ROOT, "templates/models");
   const __ProjectDir = path.join(__dirname, projectName);
   fs.mkdirSync(path.join(__ProjectDir, "models"));
   fs.readdirSync(__TemplateDir).forEach((file) => {
@@ -85,7 +87,7 @@ const copyModels = (projectName: string) => {
 };
 
 const copyServices = (projectName: string) => {
-  const __TemplateDir = path.join(__dirname, "templates", "services");
+  const __TemplateDir = path.join(PKG_ROOT, "templates/services");
   const __ProjectDir = path.join(__dirname, projectName);
   fs.mkdirSync(path.join(__ProjectDir, "services"));
   fs.readdirSync(__TemplateDir).forEach((file) => {
@@ -118,7 +120,7 @@ const doextras = async (
   prettier: boolean
 ) => {
   let selecteddb: string;
-  const __TemplateDir = path.join(__dirname, "templates", "extras");
+  const __TemplateDir = path.join(PKG_ROOT, "templates/extras");
   const __ProjectDir = path.join(__dirname, projectName);
   fs.mkdirSync(path.join(__dirname, projectName, "database"));
   if (database === "MongoDB") {
@@ -158,7 +160,7 @@ const doextras = async (
     );
   }
   let i: number;
-  let selectedci: string;
+  let selectedci: string | undefined;
   for (i = 0; i < ci.length; i++) {
     selectedci = ci[i];
     if (selectedci === "Github Actions") {

@@ -7,8 +7,9 @@ export const nextSteps = (
 ) => {
   console.log(chalk.blue("Next Steps:\n"));
   console.log(chalk.blue("\t cd " + projectName));
-  if (isInstallDependencies) {
+  if (!isInstallDependencies) {
     console.log(chalk.blue("\t " + packageManager + " install"));
   }
   console.log(chalk.blue("\t " + packageManager + " run dev"));
+  console.log(chalk.blue("\n\nHappy Coding!!\n"));
 };

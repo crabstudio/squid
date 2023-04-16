@@ -1,10 +1,8 @@
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 import figlet from "figlet";
-import { getversion } from "./getpkg";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-const version = getversion();
 
 export async function welcome() {
   const title = chalkAnimation.rainbow(
@@ -15,7 +13,6 @@ export async function welcome() {
     })
   );
   title.start();
-  console.log(chalk.blue("         Squid CLI v" + version + "\n"));
+  console.log(chalk.blue("            Squid CLI \n"));
   await sleep(300);
 }
-
