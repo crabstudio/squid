@@ -3,15 +3,17 @@
   <h1 align="center" >SQUID </h1>
 </p>
 <p align="center">
-  Node.js backend framework for building backend services.
+  Fastest way to start your typesafe, scalable and secure node.js application.
 </p>
+<p align="center">
+  Get started with squid by running `npx create-squid-app@latest` 
 
 ## Getting Started
 
 To create a new project, run:
 
 ```bash
-$ npx squid-cli
+$ npx create-squid-app@latest
 ```
 
 ## Documentation
@@ -20,4 +22,4 @@ $ npx squid-cli
 
 ## License
 
-SQUID is [Apache 2.0 licensed](LICENSE).
+SQUID is [MIT](LICENSE).
