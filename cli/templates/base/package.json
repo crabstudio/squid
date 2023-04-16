@@ -1,11 +1,12 @@
 {
-    "name": "squid",
+    "name": "my-squid-app",
     "version": "1.0.0",
     "description": "",
     "scripts": {
         "start": "ts-node index.ts",
         "dev": "nodemon --exec ts-node index.ts",
-        "build": "tsc"
+        "build": "tsc",
+        "clean": "rm -rf dist node_modules"
     },
     "repository": {
         "type": "git",
