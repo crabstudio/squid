@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { clear } from "console";
-import * as helpers from "./helpers";
-import * as utils from "./utils";
-import scafoldProject from "./scafoldProject";
+import * as helpers from "./helpers/index.js";
+import * as utils from "./utils/index.js";
+import scafoldProject from "./scafoldProject.js";
 
 
 const main = async () => {
