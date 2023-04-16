@@ -1,6 +1,6 @@
 {
   "name": "create-squid-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "CLI tool for creating squid application",
   "repository": {
     "type": "git",
