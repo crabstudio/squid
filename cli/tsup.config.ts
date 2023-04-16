@@ -1,10 +1,10 @@
 import { defineConfig } from "tsup";
 
-const isDev = true;
+const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
-  clean: true,
-  dts: true,
+  clean: !isDev,
+  dts: !isDev,
   entry: ["src/index.ts"],
   format: ["esm"],
   minify: !isDev,
