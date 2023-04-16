@@ -3,7 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import "dotenv/config";
-import router from "../routes/hello.routes";
+import router from "../routes/routes";
 import { request, response } from "express";
 
 const port = process.env.PORT || 8080;

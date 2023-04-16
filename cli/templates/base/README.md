@@ -14,7 +14,7 @@ $ yarn dev
 $ pnpm dev
 ```
 
-_make sure you have nodemon installed globally_
+_make sure you have ts-node installed globally_
 
 Hit the following endpoint to see the result:
 
@@ -49,6 +49,7 @@ $ pnpm start
 - `PORT` - Port to run the server on
 - `NODE_ENV` - Environment to run the server on
 - `CORS_ORIGIN` - CORS origin to allow
+- `HOST` - Host to run the server on
 
 ## Project Structure
 
