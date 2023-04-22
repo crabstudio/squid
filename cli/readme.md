@@ -18,7 +18,7 @@ $ npx create-squid-app@latest
 
 ## Documentation
 
-**Coming soon**
+Documentation can be found at [https://crabstudio.github.io/squid/](https://crabstudio.github.io/squid/)
 
 ## License
 
