@@ -5,10 +5,12 @@ import * as helpers from "./helpers/index.js";
 import * as utils from "./utils/index.js";
 import scafoldProject from "./scafoldProject.js";
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const main = async () => {
   clear();
   utils.welcome();
+  await sleep(500);
   const projectName = (await helpers.getNewProjectName()) as string;
   const db = (await helpers.getDb()) as string;
   const ci = (await helpers.getCi()) as string[];

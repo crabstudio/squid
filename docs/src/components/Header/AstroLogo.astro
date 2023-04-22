@@ -1,0 +1,13 @@
+---
+type Props = {
+  size: number;
+};
+const { size } = Astro.props;
+---
+
+<img
+  class="logo"
+  width={size}
+  height={size}
+  src="https://raw.githubusercontent.com/crabstudio/squid/main/docs/images/squid.png"
+/>
