@@ -1,6 +1,7 @@
 import { defineConfig } from "tsup";
 
 const isDev = process.env.NODE_ENV === "development";
+// console.log("isDev", isDev);
 
 export default defineConfig({
   clean: !isDev,
